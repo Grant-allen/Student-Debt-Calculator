@@ -1,1 +1,2 @@
 # Student-Debt-Calculator
+This program solicits a college student’s input regarding their independent/dependent status, loan amount, and their subsidized and unsubsidized interest rates. Using that information, the program automatically calculates the total owed six months after college, the student’s consolidated interest rate, monthly payment, time to payoff, as well as other elements to student loans.
