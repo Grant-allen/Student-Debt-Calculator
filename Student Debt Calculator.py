@@ -13,12 +13,13 @@ subLoanLimit =[3500, 4500, 5500, 5500, 5500, 5500, 5500, 5500, 5500, 5500, 5500,
 indepLoanLimit = [9500, 10500, 12500, 12500, 12500, 12500, 12500, 12500, 12500, 12500, 12500,12500,12500,12500,12500]
 depLoanLimit = [5500, 6500, 7500, 7500, 7500, 7500, 7500, 7500, 7500, 7500, 7500, 7500,7500,7500,7500]
 debtDict ={'<7500':10,'7500-10000':12,'10000-20000':15,'20000-40000':20,'40000-60000':25,'>60000':30}
+anotherYear = 'Y'
 #Creating a custom error so we can display a unique error message when an loan over a limit is entered
 class CustomError(Exception):
     pass
 #This loop is in range(30) solely for the purpose of running the loop enough times to collect enough user input
 #As you can see later, once a user inputs that they are not attending school for another year, the loop breaks
-for year in range(30):
+while anotherYear = 'Y':
     #Collecting if the student is Inpependent status or dependent status for a school year, an error is shown if I or D is not entered
     #If entered correctly the student type list is appended
     while True:
@@ -85,9 +86,7 @@ for year in range(30):
             print(eeeee)
     #keeping track of years in college for later calculations
     years += 1
-#breaking out of the loop if the user does not input N
-    if anotherYear != "Y":
-        break
+
 #PART B, Cost 6 months after leaving college
 totalCost_sixMonths = 0
 for i in range(0, years):
@@ -140,7 +139,6 @@ for i in range(0, years):
 loanTotal = sum(loan_list)
 #performing the calculation and rounding to the nearest 1/8th percent
 consolidatedIR = round(numerator / loanTotal,2)
-consolidatedIR = (8 * 100 * consolidatedIR) / (8 * 100)
 
 #using the debtDict to determine the amount of years the user has to pay off their loan based on total borrowed
 #here we use loanTotal from our earlier calculators to compare to our debt dictionary
@@ -162,15 +160,11 @@ else:
 import numpy_financial as npf
 monthlyPayment = abs(npf.pmt((consolidatedIR/100)/12, 12*int(payoffYears), totalCost_sixMonths))
 
-#Calcultating total interest paid, this is done by multiplying the principal, rate, and terms
-#first we obtain the total interest paid during college using this simple equation
-totalIRPaid = totalCost_sixMonths - loanTotal
-#next, we add the interest that will be paid for the the determined amount of years minus the years in college
-totalIRPaid += loanTotal * (consolidatedIR/100) * (payoffYears - years)
+#Calculating the total paid loans plus interest
+grandTotalPaid = monthlyPayment * payoffYears * 12
 
-#Calculating the total paid loans plus interest, this is by taking the total interest paid calculation from above
-# and adding it to the total amount owed 6 months out of college 
-grandTotalPaid = totalCost_sixMonths + totalIRPaid
+#Calcultating total interest paid
+totalIRPaid = grandTotalPaid - totalCost_sixMonths
 
 #printing all results with blank lines added, values needed to be in currency format are formatted as such
 print("\n\n")
