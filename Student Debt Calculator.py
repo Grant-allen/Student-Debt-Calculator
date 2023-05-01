@@ -17,8 +17,8 @@ anotherYear = 'Y'
 #Creating a custom error so we can display a unique error message when an loan over a limit is entered
 class CustomError(Exception):
     pass
-#This loop is in range(30) solely for the purpose of running the loop enough times to collect enough user input
-#As you can see later, once a user inputs that they are not attending school for another year, the loop breaks
+#data collection from user
+#once a user inputs that they are not attending school for another year, the loop breaks
 while anotherYear = 'Y':
     #Collecting if the student is Inpependent status or dependent status for a school year, an error is shown if I or D is not entered
     #If entered correctly the student type list is appended
